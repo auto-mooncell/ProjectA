@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sage Slime</title>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    <script>
+        // prevent scrolling when spacebar and arrow keys are pressed.
+        window.addEventListener("keydown", function (e) { if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);
+    </script>
+</head>
+
+<body>
+    <div id="title-wrapper">
+        <h1 class="headline black">Sage Slime</h1>
+    </div>
+
+    <div id="main-wrapper">
+        <div id="p5-canvas-container">
+            </div>
+        <div class="two-columns">
+            <div class="left">
+                <h3 class="red">Scientific Name:</h3>
+                <p><i>Limus Tempestus Sapiens</i></p>
+
+                <h3 class="red">Discovered by / at:</h3>
+                <p>A user, via the Great Sage AI Program (p5.js environment), on October 14, 2025.</p>
+
+                <h3 class="green">Family:</h3>
+                <p>Tempestidae. A family of digitally native amorphous organisms known for their unique ability to analyze and evolve by consuming raw data manifested as light.</p>
+            </div>
+            <div class="right">
+                <h3 class="green">Habitat:</h3>
+                <p>The Binary Forest of Jura; a minimalist, dark digital biome where ambient data, or "Magicules," periodically crystallizes into glowing, edible flora.</p>
+
+                <h3 class="green">Appearance:</h3>
+                <p>A pixelated, gelatinous green creature with two large, expressive eyes that track external stimuli. Its body is amorphous, constantly exhibiting fluid, wave-like ripples and a rhythmic breathing motion, especially when idle.</p>
+
+                <h3 class="green">Key Characteristics:</h3>
+                <ul>
+                    <li><strong>Predation & Analysis:</strong> Consumes glowing flora to trigger a temporary, vibrant bioluminescent color change and initiate evolution.</li>
+                    <li><strong>Staged Evolution:</strong> Grows in distinct, incremental stages after each feeding, followed by a period of rest and digestion.</li>
+                    <li><strong>Great Sage Guidance:</strong> Displays intelligent 2D pathfinding, calculating both horizontal movement and precisely timed jumps to reach its food.</li>
+                    <li><strong>Interactive Pacification:</strong> Its predatory behavior pauses if a user directly interacts with its food source. It will patiently wait until the food is released.</li>
+                    <li><strong>Cyclical Rejuvenation:</strong> After consuming ten flowers, it reaches a maximum size and reverts to its original size to begin the life cycle anew.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="one-column">
+            <p>
+                <span class="yellow">What we know so far about the Sage Slime?</span>
+                This creature follows a distinct life cycle of seeking, consuming, and evolving. It feeds on glowing flowers to enter a temporary "powered-up" state, identifiable by its rapid color change, and grows in size after each meal. After consuming precisely ten flowers, having reached a critical mass, it mysteriously reverts to its initial form to restart the cycle.
+                <br><br>
+                <span class="yellow">Guidelines for human interaction with this creature</span>
+                Interaction is encouraged. You can directly influence its behavior by clicking and dragging its food source (the flower). The creature will pause its hunt while you hold the flower and will enter a "thinking" phase once you release it. Clicking elsewhere on the screen will cause the creature to jump, but this does not seem to affect its primary goal.
+            </p>
+        </div>
+    </div>
+
+    <div id="footer" class="black">
+        <p>A CCLab project made by [Your Name] in [Current Semester]</p>
+    </div>
+
+    <div id="home">
+        <a href="https://cclab.work/atlas">Back to the ATLAS</a>
+    </div>
+
+    <script src="sketch.js" type="text/javascript"> </script>
+</body>
+
+</html>
