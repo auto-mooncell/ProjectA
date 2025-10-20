@@ -54,10 +54,9 @@ let numFireflies = 50;
 
 
 function setup() {
-  let canvas = createCanvas(750, 750);
-  canvas.parent("p5-canvas-container");
+  createCanvas(750, 750);
   noStroke();
-
+  
   y = 100;
   vy = 0;
   g = 0.8;
@@ -65,7 +64,7 @@ function setup() {
   slimeX = width / 2;
 
   spawnFlower();
-
+  
   for (let i = 0; i < numFireflies; i++) {
     fireflies.push({
       x: random(width),
@@ -81,7 +80,7 @@ function setup() {
 
 function draw() {
   background(15, 25, 10);
-
+  
   drawFireflies();
 
   if (isFlowerHeld) {
@@ -95,7 +94,7 @@ function draw() {
     drawFlower();
     pop();
   }
-
+  
   updateSlime();
   drawSlime();
 }
@@ -110,7 +109,7 @@ function handleStateSeeking() {
   if (abs(distanceX) > 5) {
     moveDir = sign(distanceX);
   }
-
+  
   let collisionZoneTop = slimeHeight * 0.2;
   if (distanceYFromCenter < -collisionZoneTop && abs(distanceX) < slimeWidth * 0.75 && abs(vy) < 1) {
     vy = -jumpStrength;
@@ -185,50 +184,6 @@ const stateActions = {
 };
 
 
-function setup() {
-  createCanvas(750, 750);
-  noStroke();
-
-  y = 100;
-  vy = 0;
-  g = 0.8;
-  ground = height - 150;
-  slimeX = width / 2;
-
-  spawnFlower();
-
-  for (let i = 0; i < numFireflies; i++) {
-    fireflies.push({
-      x: random(width), y: random(height),
-      vx: random(-0.3, 0.3), vy: random(-0.3, 0.3),
-      size: random(1, 3),
-      flickerSpeed: random(0.01, 0.05),
-      flickerOffset: random(TWO_PI)
-    });
-  }
-}
-
-function draw() {
-  background(15, 25, 10);
-
-  drawFireflies();
-
-  if (isFlowerHeld) {
-    flowerX = mouseX;
-    flowerY = mouseY;
-  }
-
-  if (slimeState === 'SEEKING' || slimeState === 'IDLE' || isFlowerHeld) {
-    push();
-    translate(flowerX, flowerY);
-    drawFlower();
-    pop();
-  }
-
-  updateSlime();
-  drawSlime();
-}
-
 function updateSlime() {
   moveDir = 0;
 
@@ -236,7 +191,7 @@ function updateSlime() {
   if (action) {
     action();
   }
-
+  
   let wave = sin(frameCount * 0.05);
   let stretchMag = 0.1;
 
@@ -269,7 +224,7 @@ function updateSlime() {
 function drawSlime() {
   let slimeWidth = slime[0].length * pixelSize * stretchX;
   let startX = slimeX - slimeWidth / 2;
-
+  
   let bodyColor;
   if (isPoweredUp) {
     let hue = (frameCount * 5) % 360;
@@ -293,13 +248,13 @@ function drawSlime() {
       );
     }
   }
-
+  
   colorMode(RGB);
 
   let eyeY = y + 8 * pixelSize * stretchY;
   let eyeLX = startX + 8 * pixelSize * stretchX;
   let eyeRX = startX + 12 * pixelSize * stretchX;
-
+  
   fill(255);
   ellipse(eyeLX, eyeY, pixelSize * 2.5, pixelSize * 2.5);
   ellipse(eyeRX, eyeY, pixelSize * 2.5, pixelSize * 2.5);
@@ -369,7 +324,7 @@ function drawFlower() {
     fill((baseHue + 45) % 360, 70, 100, 4);
     circle(0, 0, i * 2.5);
   }
-
+  
   angleMode(RADIANS);
   colorMode(RGB);
   pop();
@@ -434,7 +389,7 @@ function mousePressed() {
     isFlowerHeld = !isFlowerHeld;
     if (isFlowerHeld) {
       slimeState = 'PAUSED';
-      pauseTimer = 0;
+      pauseTimer = 0; 
       idleTimer = 0;
     } else {
       slimeState = 'IDLE';
@@ -446,7 +401,8 @@ function mousePressed() {
   let slimeW = slime[0].length * pixelSize;
   let slimeH = slime.length * pixelSize;
   if (mouseX > slimeX - slimeW / 2 && mouseX < slimeX + slimeW / 2 &&
-    mouseY > y && mouseY < y + slimeH) {
+      mouseY > y && mouseY < y + slimeH) 
+  {
     slimeState = 'POKED';
     pokeTimer = pokeDuration;
     return;
