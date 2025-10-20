@@ -54,8 +54,10 @@ let numFireflies = 50;
 
 
 function setup() {
-  createCanvas(750, 750);
+  let canvas = createCanvas(750, 750);
+  canvas.parent("p5-canvas-container");
   noStroke();
+
   
   y = 100;
   vy = 0;
