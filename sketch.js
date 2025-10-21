@@ -90,7 +90,7 @@ function draw() {
     flowerY = mouseY;
   }
 
-  if (slimeState === 'SEEKING' || slimeState === 'IDLE' || isFlowerHeld) {
+  if (slimeState === 'SEEKING' || slimeState === 'IDLE' || slimeState === 'POKED' || isFlowerHeld) {
     push();
     translate(flowerX, flowerY);
     drawFlower();
