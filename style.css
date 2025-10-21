@@ -1,99 +1,141 @@
-/*
-Template for IMA's Creative Coding Lab 
+/* --- 1. 导入像素字体 --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-Project A: Generative Creatures
-CCLaboratories Biodiversity Atlas 
-*/
-
+/* --- 2. 黑暗的“数字生物圈”背景 --- */
 body {
-    background-color: white;
-    color: DimGray;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-    line-height: 1.5em;
+  /* 匹配p5画布的深色背景 */
+  background-color: #0d1a0a; 
+  
+  /* 一个非常微妙、缓慢变化的动画背景，模拟“魔素”流动 */
+  background-image: linear-gradient(190deg, 
+    rgba(15, 25, 10, 0.9), 
+    rgba(20, 40, 15, 0.9)
+  );
+  animation: gradientShift 15s ease infinite alternate;
+  
+  /* 默认字体改为像素风格，并使用发光的绿色 */
+  font-family: 'VT323', monospace;
+  color: #a0ffa0; /* 柔和的亮绿色 */
+  font-size: 1.25rem; /* 增大像素字体的可读性 */
+  line-height: 1.5em;
 }
+
+/* --- 3. 标题使用更夸张的像素字体 --- */
+h1, h3 {
+  font-family: 'Press+Start 2P', cursive;
+}
+
+/* --- 4. 让所有标题和链接都“发光” --- */
+h1, h3, a, .yellow {
+  color: #00FF99; /* 明亮的青色/绿色 */
+  text-shadow: 
+    0 0 4px rgba(0, 255, 153, 0.3),
+    0 0 8px rgba(0, 255, 153, 0.5),
+    0 0 12px rgba(0, 255, 153, 0.7);
+}
+a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+}
+
+/* --- 5. 让p5画布像一个“发光的传送门” --- */
+#p5-canvas-container {
+  border: 1px solid rgba(0, 255, 153, 0.4);
+  border-radius: 4px;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 153, 0.3), 
+    0 0 30px rgba(0, 255, 153, 0.2) inset;
+  
+  /* 保持您原来的布局 */
+  margin: auto;
+  width: 800px;
+}
+
+/* --- 6. 让文字容器看起来像“HUD面板” --- */
+.two-columns, .one-column {
+  background-color: rgba(0, 20, 0, 0.3); /* 半透明的深色背景 */
+  border: 1px solid rgba(0, 255, 153, 0.2); /* 细微的发光边框 */
+  padding: 1.5em;
+  border-radius: 4px;
+  margin-bottom: 20px; /* 增加一点间距 */
+}
+
+/* --- 7. 覆盖旧的颜色类 --- */
+.red, .green {
+  color: #00FF99 !important;
+}
+.yellow {
+  color: #F0FF50 !important; /* 让关键信息使用不同的发光色 */
+}
+.black {
+  color: #E0E0E0 !important; /* 黑色在深色背景下不可见，改为灰色 */
+  background-color: transparent !important;
+}
+
+/* --- 动画定义 --- */
+@keyframes gradientShift {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+
+/* --- 保持您原来的布局和按钮样式 --- */
 
 /* title */
 #title-wrapper {
-    text-align: center;
+  text-align: center;
 }
-
 .headline {
-    font-size: 3em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 600;
-    margin-top: 80px;
-    margin-bottom: 60px;
+  font-size: 3em;
+  font-weight: 600;
+  margin-top: 80px;
+  margin-bottom: 60px;
 }
 
 /* main content */
 #main-wrapper {
-    width: 800px;
-    position: relative;
-    margin: auto;
-}
-
-.black {
-    color: black;
-}
-
-.red {
-    color: DeepPink;
-}
-
-.green {
-    color: LightSeaGreen;
-}
-
-.yellow {
-    color: GoldenRod;
+  width: 800px;
+  position: relative;
+  margin: auto;
 }
 
 .two-columns {
-    display: flex;
+  display: flex;
 }
-
 .left {
-    width: 50%;
-    padding: 0px 10px 0px 0px;
+  width: 50%;
+  padding: 0px 10px 0px 0px;
 }
-
 .right {
-    width: 50%;
-    padding: 0px 0px 0px 10px;
+  width: 50%;
+  padding: 0px 0px 0px 10px;
 }
 
 #footer {
-    text-align: center;
-    font-size: 0.7em;
-    margin-top: 60px;
-    padding-bottom: 30px;
+  text-align: center;
+  font-size: 0.9em; /* 稍微调大一点像素字体 */
+  margin-top: 60px;
+  padding-bottom: 30px;
 }
 
 /* home button */
 #home a {
-    position: fixed;
-    right: 15px;
-    top: 15px;
-    padding: 5px 10px;
-    color: dimgrey;
-    border: solid grey 0.5px;
-    font-size: 0.6em;
-    text-decoration: none;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  padding: 5px 10px;
+  color: #a0ffa0; /* 改为发光绿色 */
+  border: solid #a0ffa0 0.5px;
+  font-size: 0.9em;
+  text-decoration: none;
+  background: rgba(15, 25, 10, 0.8); /* 增加背景色 */
 }
-
 #home a:hover {
-    background-color: black;
-    color: white;
-    font-weight: bold;
+  background-color: #00FF99;
+  color: #000;
+  font-weight: bold;
 }
 
 /* p5.js sketch */
 canvas {
-    display: block;
-}
-
-#p5-canvas-container {
-    margin: auto;
-    width: 800px;
+  display: block;
 }
